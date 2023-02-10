@@ -101,17 +101,16 @@ class LinkedList:
     
     def __contains__(self,item):
         # TODO: implement __contains__
-        for i in self.__iter__():
-            if item == i:
-                return True
-            if item != i:
-                return False
+        if item in self.__iter__():
+            return True
+        return False
         
     def __delitem__(self,index):
         # TODO: implement __delitem__ 
         delCursor = index
         if index < 0 or index > self.numItems:
             raise IndexError("Index out of range")
+        print(self.numItems)
         cursor = self.first
         delCursor = cursor.getNext()
         for i in range(index):
@@ -122,7 +121,7 @@ class LinkedList:
         cursor.setNext(next)
         if delCursor == self.last:
             self.last = cursor
-        self.numItems = self.numItems - 1  
+        self.numItems = self.numItems - 1
             
     def __eq__(self,other):
         if type(other) != type(self):
@@ -143,10 +142,13 @@ class LinkedList:
     
     def __iter__(self):
         # TODO: implement __iter__.
-        cursor = self.first.getNext()
-        while cursor != None:
-            yield cursor.getItem()
-            cursor = cursor.getNext()
+        for index in range(self.numItems):
+            yield self.__getitem__(index)
+        #cursor = self.first
+        #while cursor:
+            #print("loop")
+            #yield cursor.getItem()
+            #cursor = cursor.getNext()
             
     def __len__(self):
         # TODO: implement __len__.
@@ -182,7 +184,7 @@ class LinkedList:
         retStr += str(self.numItems)
         return retStr
                 
-
+""" 
 myList = LinkedList()
 myList.append(5)
 myList.append(6)
@@ -195,14 +197,21 @@ myList.append(3)
 myList.append(7)
 myList.append(8)
 myList.append(9)
-myList.append(15)
-print(myList)
+myList.append(15) """
+#print(myList)
 #print(myList.first.getNext())
 #print(myList.__getitem__(1))
-print("loop:")
+""" print("loop:")
 for i in myList.__iter__():
     print(i)
 print("length",myList.__len__())
 myList.__delitem__(7)
-print(myList)
+print(myList) """
 #myList.__contains__(5)
+
+
+        #for i in self.__iter__():
+            #if item == i:
+                #return True
+            #if item != i:
+                #return False
