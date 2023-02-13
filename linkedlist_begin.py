@@ -110,13 +110,11 @@ class LinkedList:
         delCursor = index
         if index < 0 or index > self.numItems:
             raise IndexError("Index out of range")
-        print(self.numItems)
         cursor = self.first
         delCursor = cursor.getNext()
         for i in range(index):
             cursor = delCursor
             delCursor = cursor.getNext()
-        print("deletionitem:",delCursor.getItem())
         next = delCursor.getNext()
         cursor.setNext(next)
         if delCursor == self.last:

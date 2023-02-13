@@ -7,39 +7,38 @@ class LinkedQueue:
                  
     def dequeue(self):
         """TODO: Implement dequeue"""
-        if LinkedQueue.isEmpty(self):
-            raise RuntimeError("Attempt to dequeue an empty queue")
-        
-        LinkedList.__delitem__(self,0)
+        #if LinkedQueue.isEmpty(self):
+            #raise RuntimeError("Attempt to dequeue an empty queue")
+        delitem = self.items.__getitem__(0)
+        self.items.__delitem__(0)
+        return delitem
     
     def enqueue(self,item):
         """TODO: Implement enqueue"""
-        LinkedList.append(self, item)
-
+        self.items.append(item)
         
     def front(self):
         """TODO: Implement front"""
-        if LinkedQueue.isEmpty(self):
-            raise RuntimeError("Attemt to access front of empty queue")
-        
-        return self.__getitem__(0)
-        
+        return self.items.first.getNext().getItem()
     
     def isEmpty(self):
         """TODO: Implement isEmpty"""
-        return len(self) == 0
-    
+        return self.items.first.getNext() is None
+
     def clear(self):
         """TODO: Implement clear"""
         self.items = LinkedList()
 
 
-myList = LinkedList()
-myList.append(1)
-myList.append(2)
-myList.append(3)
-print(myList)
-print("enqueue:",LinkedQueue.enqueue(myList, 5))
+
+""" myQueue = LinkedQueue()
+myQueue.enqueue(3)
+myQueue.enqueue(2)
+myQueue.enqueue(3)
+print(myQueue)
+print(LinkedQueue.isEmpty(myQueue))
+print(LinkedQueue.front(myQueue)) """
+""" print("enqueue:",LinkedQueue.enqueue(myList, 5))
 print(myList)
 print("isempty:",LinkedQueue.isEmpty(myList))
 print("front:",LinkedQueue.front(myList))
@@ -47,4 +46,4 @@ print("Dequeue:",LinkedQueue.dequeue(myList))
 print(myList)
 print("clear:",LinkedQueue.clear(myList))
 print(myList)
-print("isempty:",LinkedQueue.isEmpty(myList))
+print("isempty:",LinkedQueue.isEmpty(myList)) """
